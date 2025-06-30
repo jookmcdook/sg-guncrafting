@@ -18,7 +18,7 @@ CreateThread(function()
         })
     end
 
-    for craftId, data in pairs(Config.CraftingStations) do
+    for craftId, data in pairs(Config.Crafters) do
         exports.ox_target:addBoxZone({
             coords = data.coords,
             size = vec3(1.5, 1.5, 1),
