@@ -43,7 +43,7 @@ A modular FiveM crafting system for creating weapons from components using `ox_i
    ensure sg-guncrafting
    ```
 
-3. Insert the following items into your `ox_inventory/data/items.lua`:
+3. Insert the following items into your `ox_inventory/data/items.lua` and extract the images in `install/images` into `ox_inventory/web/images/`:
 
 ```lua
 ['frame'] = {
