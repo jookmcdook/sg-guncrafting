@@ -1,97 +1,138 @@
 # sg-guncrafting
 
-A modular FiveM crafting system for creating weapons from components using `ox_inventory`, `ox_lib`, and configurable crafting logic.
+A modular weapon crafting system for FiveM powered by `ox_inventory`, featuring:
+
+- Modular weapon blueprints (short-, long- and melee weapons)
+- Material gathering points
+- Multiple NPC crafters
+- Configurable crafting time, fail chance, and material cost
+- Uses `ox_lib` for UI & `ox_target` for interactions
+- Completely extendable via `config.lua`
+
+---
 
 ## Features
 
-* Modular weapon crafting system
-* Gathering points for parts like barrels, frames, rods, handles, springs, blades
-* Optional black money payment
-* Configurable crafting time, failure chance, and required materials per weapon
-* Support for melee, short- and long-range firearms
-* No built-in selling – fits RP needs
-* Easily expandable via `config.lua`
+- 🔫 Craft pistols, rifles, and melee weapons (e.g., knives)
+- 🛠️ Gather materials like `frame`, `barrel`, `spring`, `handle`, `blade`, `rod`
+- 💰 Pay with black money (`black_money`)
+- ⏱️ Long-term crafting (e.g., 1 hour for rifles)
+- ❌ Failure chance system to balance weapon availability
+- 🎯 Optimized for `ox_target` & `ox_lib` context menus
+
+---
 
 ## Dependencies
 
-* [ox\_inventory](https://overextended.github.io/ox_inventory/)
-* [ox\_lib](https://overextended.github.io/ox_lib/)
+- [`ox_inventory`](https://overextended.github.io/ox_inventory/)
+- [`ox_lib`](https://overextended.github.io/ox_lib/)
+- [`ox_target`](https://github.com/overextended/ox_target)
+- Framework compatibility: **Qbox**, **QBCore** / **ESX** (via `Bridge`)
+
+---
 
 ## Installation
 
-1. Clone or download the resource:
-
+1. Clone or download this resource into your `resources` folder:
    ```bash
-   git clone https://your-repo-url resources/[local]/sg-guncrafting
+   git clone https://github.com/your-repo/sg-guncrafting.git
    ```
 
 2. Add to your `server.cfg`:
-
-   ```
+   ```cfg
    ensure sg-guncrafting
    ```
 
-3. Configure your weapons, gather zones, and crafting parameters in `config.lua`
+3. Copy the images from the install folder into `ox_inventory/web/images and run the included .sql file
+
+4. Insert the following items into your `ox_inventory/data/items.lua`:
+
+```lua
+['frame'] = {
+    label = 'Waffengehäuse',
+    weight = 200,
+    stack = true,
+    close = true,
+    description = 'Ein grundlegendes Bauteil für Feuerwaffen.'
+},
+['barrel'] = {
+    label = 'Lauf',
+    weight = 150,
+    stack = true,
+    close = true,
+    description = 'Wichtig für die Präzision und Reichweite.'
+},
+['spring'] = {
+    label = 'Feder',
+    weight = 50,
+    stack = true,
+    close = true,
+    description = 'Sorgt für den mechanischen Rückstoß.'
+},
+['handle'] = {
+    label = 'Griff',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = 'Ermöglicht das sichere Halten von Nahkampfwaffen.'
+},
+['blade'] = {
+    label = 'Klinge',
+    weight = 100,
+    stack = true,
+    close = true,
+    description = 'Scharfe Klinge für Messer.'
+},
+['rod'] = {
+    label = 'Metallstange',
+    weight = 120,
+    stack = true,
+    close = true,
+    description = 'Robuster Metallkern für Messer und ähnliche Waffen.'
+},
+```
+
+5. Configure `config.lua` as needed to add more weapons, materials or NPCs.
+
+---
+
+## How It Works
+
+- **Gather Points**: Players go to defined locations and press `E` to collect crafting components.
+- **Crafters**: NPCs at defined locations offer crafting via `ox_lib` context menu.
+- **Crafting Logic**: Cost in black money and materials is deducted. Crafting takes X minutes and may fail.
+- **Success**: Player receives the configured weapon as item (e.g., `weapon_carbinerifle`).
+
+---
 
 ## Configuration
 
-### Weapons
-
-Edit `config.lua`:
+All behavior is controlled via `config.lua`. Example entry:
 
 ```lua
-Weapons = {
-    weapon_pistol = {
-        label = "Pistol",
-        item = "weapon_pistol",
-        materials = {
-            barrel = 2,
-            frame = 2,
-            spring = 1,
-        },
-        price = 3000,
-        craftTime = 3600000, -- 1 hour
-        failChance = 15,
+pistol = {
+    label = "Combat Pistole",
+    item = "weapon_combatpistol",
+    blackMoneyCost = 2500,
+    materials = {
+        frame = 2,
+        barrel = 1,
+        spring = 1
     },
-    -- Add more weapons here
+    craftingTime = 3600, -- seconds
+    failChance = 15
 }
 ```
 
-### Gather Points
+---
 
-```lua
-GatherPoints = {
-    barrel = { label = "Barrel" },
-    frame = { label = "Frame" },
-    spring = { label = "Spring" },
-    blade = { label = "Blade" },
-    handle = { label = "Handle" },
-    rod = { label = "Rod" },
-}
-```
+## Credits
 
-## Events
+- ✨ **Script by:** Tao
+- 💬 **Support & Community:** [discord.gg/southgate](https://discord.gg/southgate)
 
-### Start crafting
-
-```lua
-TriggerServerEvent('sg-guncrafting:startCrafting', weaponType)
-```
-
-### Crafting finished
-
-Client receives:
-
-```lua
-sg-guncrafting:startCraftProgress
-```
-
-## Localization
-
-Edit `locales.lua` and `_L()` handles translations automatically.
+---
 
 ## License
 
-This project is open-source. Feel free to modify and contribute under your server needs.
-
-- [Discord](https://discord.gg/southgate)
+This resource is free to use for non-commercial FiveM servers. Do not reupload or resell.
