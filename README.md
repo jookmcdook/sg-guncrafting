@@ -35,7 +35,7 @@ A modular weapon crafting system for FiveM powered by `ox_inventory`, featuring:
 
 1. Clone or download this resource into your `resources` folder:
    ```bash
-   git clone https://github.com/your-repo/sg-guncrafting.git
+   git clone https://github.com/jookmcdook/sg-guncrafting.git
    ```
 
 2. Add to your `server.cfg`:
