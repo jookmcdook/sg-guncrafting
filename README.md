@@ -108,18 +108,19 @@ A modular FiveM crafting system for creating weapons from components using `ox_i
 All behavior is controlled via `config.lua`. Example entry:
 
 ```lua
-pistol = {
-    label = "Combat Pistole",
-    item = "weapon_combatpistol",
-    blackMoneyCost = 2500,
-    materials = {
-        frame = 2,
-        barrel = 1,
-        spring = 1
-    },
-    craftingTime = 3600, -- seconds
-    failChance = 15
-}
+rifle = {
+   label = "Carbine Rifle",
+   item = "weapon_carbinerifle",
+   category = "rifles",
+   price = 5000,
+   materials = {
+       frame = 3,
+       barrel = 2,
+       spring = 2
+   },
+   craftingTime = 3600,
+   failChance = 20
+   },
 ```
 
 ---
