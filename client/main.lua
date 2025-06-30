@@ -7,14 +7,13 @@ local function DebugLog(msg)
     Bridge.Debug(msg)
 end
 
--- Create gathering points (e.g., barrel, spring, etc.)
 CreateThread(function()
     for part, data in pairs(Config.GatherPoints) do
         local model = data.ped or 's_m_y_construct_01'
         RequestModel(model)
         while not HasModelLoaded(model) do Wait(0) end
 
-        local ped = CreatePed(0, model, data.coords.x, data.coords.y, data.coords.z - 1.0, data.coords.w, false, true)
+        local ped = CreatePed(0, model, data.coords.x, data.coords.y, data.coords.z - 1.0, data.coords.w or 0.0, false, true)
         SetEntityInvincible(ped, true)
         FreezeEntityPosition(ped, true)
         SetBlockingOfNonTemporaryEvents(ped, true)
@@ -25,12 +24,29 @@ CreateThread(function()
                 icon = 'fa-solid fa-box',
                 label = ('Collect %s'):format(data.label),
                 onSelect = function()
-                    TriggerServerEvent('weaponcraft:gatherItem', part)
-                end
+                local isCancelled = false
+
+                Bridge.ShowTextUI('[X] Cancel gathering', 'info')
+
+                CreateThread(function()
+                    while not isCancelled do
+                        TriggerServerEvent('sg-guncrafting:gatherItem', part)
+                        Wait(data.time or 5000)
+
+                        if IsControlJustPressed(0, 73) then -- Taste X
+                            isCancelled = true
+                            Bridge.Notify('Gathering canceled', 'info')
+                            Bridge.HideTextUI()
+            end
+        end
+    end)
+end
+
             }
         })
     end
 end)
+
 
 CreateThread(function()
     for weaponType, data in pairs(Config.CraftingPoints) do
