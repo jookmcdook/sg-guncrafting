@@ -51,42 +51,42 @@ A modular FiveM crafting system for creating weapons from components using `ox_i
     weight = 200,
     stack = true,
     close = true,
-    description = 'Ein grundlegendes Bauteil für Feuerwaffen.'
+    description = 'a frame, needed to build a firearm'
 },
 ['barrel'] = {
     label = 'Lauf',
     weight = 150,
     stack = true,
     close = true,
-    description = 'Wichtig für die Präzision und Reichweite.'
+    description = 'a barrel, needed to build a firearm'
 },
 ['spring'] = {
     label = 'Feder',
     weight = 50,
     stack = true,
     close = true,
-    description = 'Sorgt für den mechanischen Rückstoß.'
+    description = 'a spring, needed to build a firearm'
 },
 ['handle'] = {
     label = 'Griff',
     weight = 100,
     stack = true,
     close = true,
-    description = 'Ermöglicht das sichere Halten von Nahkampfwaffen.'
+    description = 'a handle, needed to build a melee weapon'
 },
 ['blade'] = {
     label = 'Klinge',
     weight = 100,
     stack = true,
     close = true,
-    description = 'Scharfe Klinge für Messer.'
+    description = 'a dull blade, needed to build a melee weapon'
 },
 ['rod'] = {
     label = 'Metallstange',
     weight = 120,
     stack = true,
     close = true,
-    description = 'Robuster Metallkern für Messer und ähnliche Waffen.'
+    description = 'a metal rod, needed to build a melee weapon'
 },
 ```
 
