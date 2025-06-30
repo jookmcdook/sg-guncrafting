@@ -47,42 +47,42 @@ A modular FiveM crafting system for creating weapons from components using `ox_i
 
 ```lua
 ['frame'] = {
-    label = 'Waffengehäuse',
+    label = 'Weapon Frame',
     weight = 200,
     stack = true,
     close = true,
     description = 'a frame, needed to build a firearm'
 },
 ['barrel'] = {
-    label = 'Lauf',
+    label = 'Weapon Barrel',
     weight = 150,
     stack = true,
     close = true,
     description = 'a barrel, needed to build a firearm'
 },
 ['spring'] = {
-    label = 'Feder',
+    label = 'Weapon Spring',
     weight = 50,
     stack = true,
     close = true,
     description = 'a spring, needed to build a firearm'
 },
 ['handle'] = {
-    label = 'Griff',
+    label = 'Handle',
     weight = 100,
     stack = true,
     close = true,
     description = 'a handle, needed to build a melee weapon'
 },
 ['blade'] = {
-    label = 'Klinge',
+    label = 'Blade',
     weight = 100,
     stack = true,
     close = true,
     description = 'a dull blade, needed to build a melee weapon'
 },
 ['rod'] = {
-    label = 'Metallstange',
+    label = 'Metal Rod',
     weight = 120,
     stack = true,
     close = true,
