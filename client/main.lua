@@ -49,7 +49,7 @@ end)
 
 
 CreateThread(function()
-    for weaponType, data in pairs(Config.CraftingPoints) do
+    for weaponType, data in pairs(Config.Crafters) do
         local model = data.ped or 's_m_m_ammucountry'
         RequestModel(model)
         while not HasModelLoaded(model) do Wait(0) end
