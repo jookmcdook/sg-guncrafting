@@ -128,7 +128,7 @@ rifle = {
 ## Credits
 
 - ✨ **Script by:** Tao
-- 💬 **Support & Community:** [discord.gg/southgate](https://discord.gg/qbox)
+- 💬 **Support & Community:** [discord.gg/qbox](https://discord.gg/qbox) or my own server: [discord.gg/southgate](https://discord.gg/southgate)
 
 ---
 
