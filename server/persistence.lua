@@ -1,5 +1,4 @@
 local ox_inventory = exports.ox_inventory
-local MySQL = exports.oxmysql
 
 local function getLicense(src)
     local ids = GetPlayerIdentifiers(src)
@@ -18,17 +17,19 @@ function SaveCraftingQueue(playerSrc, weaponId, duration)
     local now = os.time()
     local endTime = now + duration
 
-    MySQL.insert("INSERT INTO guncrafting_queue (license, weapon_id, started_at, end_at, completed) VALUES (?, ?, ?, ?, ?)",
-        { license, weaponId, now, endTime, 0 })
+    exports.oxmysql:insert('INSERT INTO guncrafting_queue (license, weapon_id, started_at, end_at, completed) VALUES (?, ?, ?, ?, ?)', {
+        license, weaponId, now, endTime, 0
+    })
 end
 
 function CompleteCrafting(license, weaponId)
-    MySQL.update("UPDATE guncrafting_queue SET completed = 1 WHERE license = ? AND weapon_id = ? AND completed = 0",
-        { license, weaponId })
+    exports.oxmysql:update('UPDATE guncrafting_queue SET completed = 1 WHERE license = ? AND weapon_id = ? AND completed = 0', {
+        license, weaponId
+    })
 end
 
 function ResumePendingCrafting()
-    MySQL.query("SELECT * FROM guncrafting_queue WHERE completed = 0", {}, function(results)
+    exports.oxmysql:query('SELECT * FROM guncrafting_queue WHERE completed = 0', {}, function(results)
         for _, row in ipairs(results) do
             local remaining = row.end_at - os.time()
             if remaining <= 0 then

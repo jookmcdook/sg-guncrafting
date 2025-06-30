@@ -1,4 +1,4 @@
-CraftingConfig = {
+Config = {
     Weapons = {
         pistol = {
             label = "Combat Pistol",
@@ -101,3 +101,5 @@ CraftingConfig = {
         }
     }
 }
+
+Config = CraftingConfig
