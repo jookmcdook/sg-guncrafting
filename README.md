@@ -35,7 +35,7 @@ A modular FiveM crafting system for creating weapons from components using `ox_i
 
 1. Clone or download this resource into your `resources` folder:
    ```bash
-   git clone https://github.com/your-repo/sg-guncrafting.git
+   git clone https://github.com/jookmcdook/sg-guncrafting.git
    ```
 
 2. Add to your `server.cfg`:
